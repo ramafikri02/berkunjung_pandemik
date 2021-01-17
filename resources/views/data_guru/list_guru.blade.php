@@ -1,13 +1,13 @@
 @extends('master')
 
-@section('title', 'List Siswa')
+@section('title', 'List Guru')
 
 @section('content')
 <div class="row">
     <div class="col-12">
         <div class="card mt-4 mb-4">
             <div class="card-header text-white">
-                <h4>List Siswa</h4>
+                <h4>List Guru</h4>
             </div>
             <div class="card-body">
                 @if(session()->has('pesanSuccess'))
@@ -25,38 +25,34 @@
                 </div>
                 @endif
                 <div class="table-responsive">
-                    <table class="table table-bordered" id="tabelSiswa" width="100%" cellspacing="0">
+                    <table class="table table-bordered" id="tabelGuru" width="100%" cellspacing="0">
                         <thead style="font-weight: bold;">
                             <tr class="text-center">
                                 <th>#</th>
                                 <th>Nama</th>
                                 <th>Email</th>
-                                <th>Absen</th>
-                                <th>Kelas</th>
-                                <th>Jurusan</th>
+                                <th>Mata Pelajaran</th>
                                 <th>Jenis Kelamin</th>
                                 <th style="max-width: 110px;">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                @foreach ($siswas as $siswa)
+                                @foreach ($gurus as $guru)
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $siswa->nama }}</td>
-                                <td>{{ $siswa->email }}</td>
-                                <td>{{ $siswa->absen }}</td>
-                                <td>{{ $siswa->kelas }}</td>
-                                <td>{{ $siswa->jurusan }}</td>
-                                <td>{{ $siswa->jenis_kelamin }}</td>
+                                <td>{{ $guru->nama }}</td>
+                                <td>{{ $guru->email }}</td>
+                                <td>{{ $guru->mata_pelajaran }}</td>
+                                <td>{{ $guru->jenis_kelamin }}</td>
                                 <td>
                                     <!-- Button trigger modal -->
-                                    <a href="/siswa/{{ $siswa->id }}" class="btn btn-success">
+                                    <a href="/guru/{{ $guru->id }}" class="btn btn-success">
                                         <i class="fas fa-eye"></i>
                                     </a>
-                                    <a href="/siswa/edit/{{ $siswa->id }}" class="btn btn-warning">
+                                    <a href="/guru/edit/{{ $guru->id }}" class="btn btn-warning">
                                         <i class="fas fa-edit"></i>
                                     </a>
-                                    <a href="#" class="btn btn-danger btn-delete" data-id="{{ $siswa->id }}" data-nama="{{ $siswa->nama }}" data-toggle="modal" data-target="#modal-delete">
+                                    <a href="#" class="btn btn-danger btn-delete" data-id="{{ $guru->id }}" data-nama="{{ $guru->nama }}" data-toggle="modal" data-target="#modal-delete">
                                         <i class="fas fa-trash"></i>
                                     </a>
                                 </td>
@@ -71,10 +67,10 @@
             <div class="modal fade" id="modal-delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <form action="{{ route('siswa.delete.proses') }}" method="POST">
+                        <form action="{{ route('guru.delete.proses') }}" method="POST">
                             {{ csrf_field() }}
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Hapus Data Siswa</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Konfirmasi Hapus</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>

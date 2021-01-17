@@ -1,13 +1,13 @@
 @extends('master')
 
-@section('title', 'List Siswa')
+@section('title', 'Riwayat Berkunjung')
 
 @section('content')
 <div class="row">
     <div class="col-12">
         <div class="card mt-4 mb-4">
             <div class="card-header text-white">
-                <h4>List Siswa</h4>
+                <h4>Riwayat Berkunjung</h4>
             </div>
             <div class="card-body">
                 @if(session()->has('pesanSuccess'))
@@ -25,38 +25,38 @@
                 </div>
                 @endif
                 <div class="table-responsive">
-                    <table class="table table-bordered" id="tabelSiswa" width="100%" cellspacing="0">
+                    <table class="table table-bordered" id="tabelBerkunjung" width="100%" cellspacing="0">
                         <thead style="font-weight: bold;">
                             <tr class="text-center">
                                 <th>#</th>
                                 <th>Nama</th>
-                                <th>Email</th>
-                                <th>Absen</th>
                                 <th>Kelas</th>
-                                <th>Jurusan</th>
-                                <th>Jenis Kelamin</th>
+                                <th>Tanggal</th>
+                                <th>Jam</th>
+                                <th>Kondisi</th>
+                                <th>Status</th>
                                 <th style="max-width: 110px;">Action</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($berkunjungs as $berkunjung)
                             <tr>
-                                @foreach ($siswas as $siswa)
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $siswa->nama }}</td>
-                                <td>{{ $siswa->email }}</td>
-                                <td>{{ $siswa->absen }}</td>
-                                <td>{{ $siswa->kelas }}</td>
-                                <td>{{ $siswa->jurusan }}</td>
-                                <td>{{ $siswa->jenis_kelamin }}</td>
+                                <td>{{ $berkunjung->nama }}</td>
+                                <td>{{ $berkunjung->kelas }}</td>
+                                <td>{{ $berkunjung->tgl_berkunjung }}</td>
+                                <td>{{ $berkunjung->jam_berkunjung }}</td>
+                                <td>{{ $berkunjung->kondisi }}</td>
+                                <td class="bg-success text-white">{{ $berkunjung->status }}</td>
                                 <td>
                                     <!-- Button trigger modal -->
-                                    <a href="/siswa/{{ $siswa->id }}" class="btn btn-success">
+                                    <a href="/berkunjung/{{ $berkunjung->id }}" class="btn btn-success">
                                         <i class="fas fa-eye"></i>
                                     </a>
-                                    <a href="/siswa/edit/{{ $siswa->id }}" class="btn btn-warning">
+                                    <a href="/berkunjung/edit/{{ $berkunjung->id }}" class="btn btn-warning">
                                         <i class="fas fa-edit"></i>
                                     </a>
-                                    <a href="#" class="btn btn-danger btn-delete" data-id="{{ $siswa->id }}" data-nama="{{ $siswa->nama }}" data-toggle="modal" data-target="#modal-delete">
+                                    <a href="#" class="btn btn-danger btn-delete" data-id="{{ $berkunjung->id }}" data-nama="{{ $berkunjung->nama }}" data-toggle="modal" data-target="#modal-delete">
                                         <i class="fas fa-trash"></i>
                                     </a>
                                 </td>

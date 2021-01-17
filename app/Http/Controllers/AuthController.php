@@ -25,11 +25,11 @@ class AuthController extends Controller
             if ($data->role == "admin") {
                 return redirect()->route('siswa.tambah');
             } else if ($data->role == "guru") {
-                // return redirect()->route('guru');
+                return redirect()->route('berkunjung.list');
             } else if ($data->role == "satpam") {
-                // return redirect()->route('satpam');
+                return redirect()->route('berkunjung.list');
             } else if ($data->role == "siswa") {
-                // return redirect()->route('siswa');
+                return redirect()->route('berkunjung.list');
             }
         } else {
             return redirect()->back()->with('pesanDanger', "Email atau Password Anda Salah!");

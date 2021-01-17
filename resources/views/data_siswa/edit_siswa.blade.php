@@ -1,43 +1,30 @@
 @extends('master')
 
-@section('title', 'Input Siswa')
+@section('title', 'Edit Siswa')
 
 @section('content')
 <div class="row">
     <div class="col-6 offset-3">
         <div class="card mt-4 mb-4">
             <div class="card-header text-white">
-                <h4>Tambah Siswa</h4>
+                <h4>Edit Siswa</h4>
             </div>
             <div class="card-body">
-                @if(session()->has('pesanSuccess'))
-                <div class="alert alert-success alert-dismissible fade show" role="alert">{{ Session::get('pesanSuccess') }}
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                @endif
-                @if(session()->has('pesanDanger'))
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">{{ Session::get('pesanDanger') }}
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                @endif
-                <form action="{{ route('siswa.tambah.proses') }}" method="POST">
+                <form action="{{ route('siswa.edit.proses') }}" method="POST">
                     {{ csrf_field() }}
+                    <input type="hidden" class="form-control" value="{{ $siswa->id }}" name="id" id="id" required>
                     <div class="mb-3">
                         <label for="nama" class="form-label">Nama</label>
-                        <input type="text" class="form-control" name="nama" id="nama" required>
+                        <input type="text" class="form-control" value="{{ $siswa->nama }}" name="nama" id="nama" required>
                     </div>
                     <div class="mb-3">
                         <label for="absen" class="form-label">Absen</label>
-                        <input type="number" class="form-control" name="absen" id="absen" required>
+                        <input type="number" class="form-control" value="{{ $siswa->absen }}" name="absen" id="absen" required>
                     </div>
                     <div class="form-group">
                         <label for="kelas">Kelas</label>
                         <select class="form-control" name="kelas" id="kelas" required>
-                            <option value="" readonly>Pilih kelas...</option>
+                            <option value="{{ $siswa->kelas }}" >{{ $siswa->kelas }}</option>
                             <option value="X">X</option>
                             <option value="XI">XI</option>
                             <option value="XII">XII</option>
@@ -46,7 +33,7 @@
                     <div class="form-group">
                         <label for="jurusan">Jurusan</label>
                         <select class="form-control" name="jurusan" id="jurusan" required>
-                            <option value="" readonly>Pilih jurusan...</option>
+                            <option value="{{ $siswa->jurusan }}">{{ $siswa->jurusan }}</option>
                             <option value="RPL">RPL</option>
                             <option value="MM">MM</option>
                             <option value="TEI">TEI</option>
@@ -63,7 +50,7 @@
                         <label class="form-check-label" for="jenis_kelamin2">Perempuan</label>
                     </div>
                     <a href="{{ route('siswa.list') }}" class="btn btn-primary">Kembali</a>
-                    <button type="submit" class="btn btn-primary" style="float: right;">Tambah</button>
+                    <button type="submit" class="btn btn-primary" style="float: right;">Simpan</button>
                 </form>
             </div>
         </div>
