@@ -18,13 +18,17 @@
                         <input type="text" class="form-control" value="{{ $siswa->nama }}" name="nama" id="nama" required>
                     </div>
                     <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" value="{{ $siswa->email }}" name="email" id="email" required>
+                    </div>
+                    <div class="mb-3">
                         <label for="absen" class="form-label">Absen</label>
                         <input type="number" class="form-control" value="{{ $siswa->absen }}" name="absen" id="absen" required>
                     </div>
                     <div class="form-group">
                         <label for="kelas">Kelas</label>
                         <select class="form-control" name="kelas" id="kelas" required>
-                            <option value="{{ $siswa->kelas }}" >{{ $siswa->kelas }}</option>
+                            <option value="{{ $siswa->kelas }}">{{ $siswa->kelas }}</option>
                             <option value="X">X</option>
                             <option value="XI">XI</option>
                             <option value="XII">XII</option>
@@ -49,9 +53,9 @@
                         <input class="form-check-input" type="radio" name="jenis_kelamin" id="jenis_kelamin2" value="Perempuan" required>
                         <label class="form-check-label" for="jenis_kelamin2">Perempuan</label>
                     </div>
-                    <a href="{{ route('siswa.list') }}" class="btn btn-primary">Kembali</a>
-                    <button type="submit" class="btn btn-primary" style="float: right;">Simpan</button>
                 </form>
+                <a href="{{ route('siswa.list') }}" class="btn btn-primary">Kembali</a>
+                <button type="submit" class="btn btn-primary" style="float: right;">Simpan</button>
             </div>
         </div>
     </div>

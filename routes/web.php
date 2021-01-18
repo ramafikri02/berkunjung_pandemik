@@ -27,7 +27,9 @@ Route::get('/', function () {
 Route::post('/login', [AuthController::class, 'login'])->name('proseslogin');
 
 Route::middleware([CekLoginMiddleware::class])->group(function () {
-    
+    //Profi;e
+    Route::get('/profile', [AuthController::class, 'profile'])->name('profile');
+
     //Data Siswa
     Route::get('/siswa', [SiswaController::class, 'listSiswa'])->name('siswa.list');
     Route::get('/siswa/add', function () {

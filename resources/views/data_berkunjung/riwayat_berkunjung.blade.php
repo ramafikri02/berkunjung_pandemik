@@ -53,12 +53,14 @@
                                     <a href="/berkunjung/{{ $berkunjung->id }}" class="btn btn-success">
                                         <i class="fas fa-eye"></i>
                                     </a>
+                                    @if($berkunjung->status == "Pending")
                                     <a href="/berkunjung/edit/{{ $berkunjung->id }}" class="btn btn-warning">
                                         <i class="fas fa-edit"></i>
                                     </a>
                                     <a href="#" class="btn btn-danger btn-delete" data-id="{{ $berkunjung->id }}" data-nama="{{ $berkunjung->nama }}" data-toggle="modal" data-target="#modal-delete">
                                         <i class="fas fa-trash"></i>
                                     </a>
+                                    @endif
                                 </td>
                             </tr>
                             @endforeach

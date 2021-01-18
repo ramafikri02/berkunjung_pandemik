@@ -47,8 +47,8 @@
                             </div>
                             @endif
                             <div class="mb-3">
-                                <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" name="email" id="email" required>
+                                <label for="usermail" class="form-label">Username atau Email</label>
+                                <input type="text" class="form-control" name="usermail" id="usermail" required>
                             </div>
                             <div class="mb-3">
                                 <label for="password" class="form-label">Password</label>

@@ -11,9 +11,9 @@ class AuthController extends Controller
 {
     public function login(Request $request)
     {
-        $email = $request->email;
+        $usermail = $request->usermail;
         $password = $request->password;
-        $data = User::where('email', $email)->first();
+        $data = User::where('email', $usermail)->orWhere('username', $usermail)->first();
         if ($data && Hash::Check($password, $data->password)) {
             Session::put('id', $data->id);
             Session::put('nama', $data->nama);
@@ -34,6 +34,11 @@ class AuthController extends Controller
         } else {
             return redirect()->back()->with('pesanDanger', "Email atau Password Anda Salah!");
         }
+    }
+
+    public function profile() {
+        $profile = User::find(session::get('id'));
+        return view('auth/profile', compact('profile'));
     }
 
     public function logout(Request $request)
